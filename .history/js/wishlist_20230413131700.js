@@ -96,7 +96,7 @@ setTimeout(() => {
           <div class="cta">View Details</div>
         </a>
       </div>
-    </div>
+  </div>  
     `;
   });
 }, 600);
