@@ -149,5 +149,6 @@ function checkLength(value, len) {
 function validateEmail(email) {
   const regEx = /\S+@\S+\.\S/; // The \S+ means one or more non-whitespace characters
   const patternMatches = regEx.test(email);
+  // console.log(email.value);
   return patternMatches;
 };

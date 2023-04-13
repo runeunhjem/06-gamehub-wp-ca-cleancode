@@ -38,6 +38,7 @@ message.addEventListener("blur", function() {
   message.placeholder = "What can we help you with";
 });
 
+
 // THE VALIDATION FUNCTION TO BE RUN ON SUBMIT
 function validateForm(event) {
   event.preventDefault(); // Needed so the forms dont reset
@@ -97,6 +98,7 @@ function validateForm(event) {
   }
 };
 
+
 // EVENTLISTENER TO CHECK IF SUBMIT BUTTON IS CLICKED
 validationForm.addEventListener("submit", function (event) {
   formSubmitted = true; // Set flag to true on form submit
@@ -149,5 +151,6 @@ function checkLength(value, len) {
 function validateEmail(email) {
   const regEx = /\S+@\S+\.\S/; // The \S+ means one or more non-whitespace characters
   const patternMatches = regEx.test(email);
+  // console.log(email.value);
   return patternMatches;
 };
