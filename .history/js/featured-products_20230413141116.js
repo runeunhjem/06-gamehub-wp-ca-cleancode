@@ -67,25 +67,25 @@ setTimeout(() => {
           <div class="small psnleft readreview">
             <a href="https://www.gamespot.com/games/reviews/">Read review</a>
           </div>
-          <div class="togglewishlist add-to-wishlist">
-            <span class="small psnright" href="wishlist.html">
-              <img class="remove small psnright add-to-wishlist wishlist-icon ${ game.isWishlisted === 1 ? "fas" : "far" }" src="${heartIcon}" alt="Add to wishlist" data-id="${parseInt(game.id)}">
+        <div class="togglewishlist add-to-wishlist">
+          <span class="small psnright" href="wishlist.html">
+            <img class="remove small psnright add-to-wishlist wishlist-icon ${ game.isWishlisted === 1 ? "fas" : "far" }" src="${heartIcon}" alt="Add to wishlist" data-id="${parseInt(game.id)}">
             </span>
-          </div>
-          <div class="price psnright">
-            <span class="dollar yellow">.</span>
-            <span class="price currentPrice">${parseFloat(game.currentPrice)}</span>
-          </div>
-          <div class="price__before psnright">
-            <span class="dollar yellow">.</span>${parseFloat(game.beforePrice)}
-          </div>
+            </div>
+        <div class="price psnright">
+        <span class="dollar yellow">.</span>
+        <span class="price currentPrice">${parseFloat(game.currentPrice)}</span>
+        </div>
+        <div class="price__before psnright">
+        <span class="dollar yellow">.</span>${parseFloat(game.beforePrice)}
+        </div>
         </div>
         <div class="psn__buttons">
-          <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
-            <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
-              <div class="cta">View Details</div>
-            </a>
-          </div>
+        <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
+        <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
+        <div class="cta">View Details</div>
+        </a>
+        </div>
         </div>
         `;
       })

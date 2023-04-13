@@ -84,7 +84,7 @@ setTimeout(() => {
           <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
             <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
               <div class="cta">View Details</div>
-            </a>
+          </a>
           </div>
         </div>
         `;
