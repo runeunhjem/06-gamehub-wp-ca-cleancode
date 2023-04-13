@@ -204,12 +204,18 @@ fetch(apiUrl)
         const quantity = parseInt(quantityInput.value);
         const total = price * quantity;
         const formattedTotal = total.toFixed(2);
+        console.log(`Total price: $${formattedTotal}`);
       });
 
       // ADD TO CART FUNCTION
       function addToCart() {
         const quantity = parseInt(quantityInput.value);
+        console.log("game is: ", game);
         const coverImage = game.coverImage;
+        // const isWishlisted = 1;
+        console.log("game.id is: ", parseInt(game.id));
+        console.log("game.isWishlisted is: ", game.isWishlisted);
+        console.log("coverImage is: ", coverImage);
         const itemName = game.itemName;
         const currentPrice = parseFloat(game.currentPrice);
         const beforePrice = parseFloat(game.beforePrice);
@@ -232,6 +238,7 @@ fetch(apiUrl)
           region: region,
           platform: platform,
           gamespotRating: gamespotRating,
+          // quantity: 1,
           currentPrice: currentPrice,
           beforePrice: beforePrice,
           platformShort: platformShort,
@@ -254,9 +261,15 @@ fetch(apiUrl)
           cart.push(product);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("cart is: ", cart);
       }
       // Add event listeners to the buttons
       document.querySelector(".add-to-cart").addEventListener("click", addToCart);
+      // document.querySelector(".checkout-event").addEventListener("click", () => {
+      //   localStorage.removeItem("cart");
+      //   // Other checkout logic goes here
+      //   console.log(localStorage.cart);
+      // });
     };
     createDetails();
 
@@ -271,17 +284,27 @@ fetch(apiUrl)
     const target = event.target;
     if (!target.classList.contains("add-to-wishlist")) {
       return; // ignore clicks on non-add-to-wishlist elements
-    };
+    }
+    console.log("target.dataset.id is: ", target.dataset.id);
     const gameID = target.dataset.id;
+    console.log("gameID is: ", gameID);
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const existingIndex = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID));
     if (existingIndex >= 0) {
       // game is already in wishlist, remove it
       wishlist.splice(existingIndex, 1);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log(`Game with ID ${gameID} removed from wishlist`);
     } else {
+      // event.target.src = isWishlisted ? "images/ico_heart_+.svg" : "images/ico_heart.svg";
       const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
+
+      console.log("game is: ", game);
       const coverImage = game.coverImage;
+
+      console.log("game.id is: ", game.id);
+      console.log("game.isWishlisted is: ", game.isWishlisted);
+      console.log("coverImage is: ", coverImage);
       const container = target.closest(".container");
       const itemName = game.itemName;
       const currentPrice = parseFloat(game.currentPrice);
@@ -300,8 +323,11 @@ fetch(apiUrl)
       const productPlot = game.productPlot;
       const productGameplay = game.productGameplay;
       const productKeyFeatures = game.productKeyFeatures;
+      // const index = game.index;
+
       const product = {
         id: parseInt(gameID),
+        // index: index,
         itemName: itemName,
         coverImage: coverImage,
         isWishlisted: isWishlisted,
@@ -325,12 +351,16 @@ fetch(apiUrl)
       // let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log("wishlist is: ", wishlist);
+
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       const cartGame = cart.find((game) => game.id === gameID);
+      console.log("cartGame is: ", cartGame);
       if (cartGame) {
         cartGame.isWishlisted = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       };
+      console.log("cart is: ", cart);
     };
   };
 

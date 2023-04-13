@@ -279,9 +279,17 @@ fetch(apiUrl)
       // game is already in wishlist, remove it
       wishlist.splice(existingIndex, 1);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log(`Game with ID ${gameID} removed from wishlist`);
     } else {
+      // event.target.src = isWishlisted ? "images/ico_heart_+.svg" : "images/ico_heart.svg";
       const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
+
+      console.log("game is: ", game);
       const coverImage = game.coverImage;
+
+      console.log("game.id is: ", game.id);
+      console.log("game.isWishlisted is: ", game.isWishlisted);
+      console.log("coverImage is: ", coverImage);
       const container = target.closest(".container");
       const itemName = game.itemName;
       const currentPrice = parseFloat(game.currentPrice);
@@ -300,8 +308,11 @@ fetch(apiUrl)
       const productPlot = game.productPlot;
       const productGameplay = game.productGameplay;
       const productKeyFeatures = game.productKeyFeatures;
+      // const index = game.index;
+
       const product = {
         id: parseInt(gameID),
+        // index: index,
         itemName: itemName,
         coverImage: coverImage,
         isWishlisted: isWishlisted,
@@ -325,12 +336,16 @@ fetch(apiUrl)
       // let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log("wishlist is: ", wishlist);
+
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       const cartGame = cart.find((game) => game.id === gameID);
+      console.log("cartGame is: ", cartGame);
       if (cartGame) {
         cartGame.isWishlisted = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       };
+      console.log("cart is: ", cart);
     };
   };
 

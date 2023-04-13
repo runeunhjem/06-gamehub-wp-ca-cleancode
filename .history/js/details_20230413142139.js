@@ -331,6 +331,7 @@ fetch(apiUrl)
         cartGame.isWishlisted = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       };
+      console.log("cart is: ", cart);
     };
   };
 

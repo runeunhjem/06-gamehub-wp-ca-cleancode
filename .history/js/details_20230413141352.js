@@ -65,20 +65,32 @@ fetch(apiUrl)
     // setTimeout(() => {
     // CREATE HTML WITH DEATILS FROM API
     function createDetails() {
+      console.log("games on line 57 inside after createDetails with NO games.js is: ", games);
       const queryString = window.location.search;
       const params = new URLSearchParams(queryString);
       const gameID = parseInt(params.get("id"));
+      console.log("gameID on line 16 with games.js is: ", gameID);
+      console.log("gameID on line 16 with games.js is: ", typeof gameID);
 
       // Find the game object with the matching ID
+      // setTimeout(() => {
+
       const game = games.find((game) => parseInt(game.id) === gameID);
+      console.log("game.isWishlisted on line 70 with games.js is: ", game.isWishlisted);
       let heartIcon = game.isWishlisted === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
-      // const wishlistedGames = JSON.parse(localStorage.getItem("wishlist")) || [];
+      const wishlistedGames = JSON.parse(localStorage.getItem("wishlist")) || [];
+      console.log("wishlistedGames is: ", wishlistedGames);
+
       const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
       // Set the game title as the page title
       document.title = game.itemName;
 
+
+      // }, 1000);
+
       setTimeout(() => {
         const wishlistIcons = document.querySelectorAll(".wishlist-icon");
+        console.log("wishlistIcons.length is: ", wishlistIcons.length);
         wishlistIcons.forEach(function (wishlistIcon) {
           wishlistIcon.addEventListener("click", function () {
             heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -118,7 +130,7 @@ fetch(apiUrl)
                     <div class="small psncenter region-ico">
                       <img src="images/ico_europe.svg" alt="Region | Europe">
                     </div>
-                    <div class="small psnleft region-text">${game.region}</div>
+                    <div class="small snleft region-text">${game.region}</div>
                     <div class="small psnleft platform">Platform:</div>
                     <div class="small psncenter platform-ico">
                       <img src="images/ico_psn.svg" alt="${game.platform}">
@@ -204,12 +216,18 @@ fetch(apiUrl)
         const quantity = parseInt(quantityInput.value);
         const total = price * quantity;
         const formattedTotal = total.toFixed(2);
+        console.log(`Total price: $${formattedTotal}`);
       });
 
       // ADD TO CART FUNCTION
       function addToCart() {
         const quantity = parseInt(quantityInput.value);
+        console.log("game is: ", game);
         const coverImage = game.coverImage;
+        // const isWishlisted = 1;
+        console.log("game.id is: ", parseInt(game.id));
+        console.log("game.isWishlisted is: ", game.isWishlisted);
+        console.log("coverImage is: ", coverImage);
         const itemName = game.itemName;
         const currentPrice = parseFloat(game.currentPrice);
         const beforePrice = parseFloat(game.beforePrice);
@@ -232,6 +250,7 @@ fetch(apiUrl)
           region: region,
           platform: platform,
           gamespotRating: gamespotRating,
+          // quantity: 1,
           currentPrice: currentPrice,
           beforePrice: beforePrice,
           platformShort: platformShort,
@@ -254,9 +273,15 @@ fetch(apiUrl)
           cart.push(product);
         }
         localStorage.setItem("cart", JSON.stringify(cart));
+        console.log("cart is: ", cart);
       }
       // Add event listeners to the buttons
       document.querySelector(".add-to-cart").addEventListener("click", addToCart);
+      // document.querySelector(".checkout-event").addEventListener("click", () => {
+      //   localStorage.removeItem("cart");
+      //   // Other checkout logic goes here
+      //   console.log(localStorage.cart);
+      // });
     };
     createDetails();
 
@@ -271,17 +296,27 @@ fetch(apiUrl)
     const target = event.target;
     if (!target.classList.contains("add-to-wishlist")) {
       return; // ignore clicks on non-add-to-wishlist elements
-    };
+    }
+    console.log("target.dataset.id is: ", target.dataset.id);
     const gameID = target.dataset.id;
+    console.log("gameID is: ", gameID);
     let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     const existingIndex = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID));
     if (existingIndex >= 0) {
       // game is already in wishlist, remove it
       wishlist.splice(existingIndex, 1);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log(`Game with ID ${gameID} removed from wishlist`);
     } else {
+      // event.target.src = isWishlisted ? "images/ico_heart_+.svg" : "images/ico_heart.svg";
       const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
+
+      console.log("game is: ", game);
       const coverImage = game.coverImage;
+
+      console.log("game.id is: ", game.id);
+      console.log("game.isWishlisted is: ", game.isWishlisted);
+      console.log("coverImage is: ", coverImage);
       const container = target.closest(".container");
       const itemName = game.itemName;
       const currentPrice = parseFloat(game.currentPrice);
@@ -300,8 +335,11 @@ fetch(apiUrl)
       const productPlot = game.productPlot;
       const productGameplay = game.productGameplay;
       const productKeyFeatures = game.productKeyFeatures;
+      // const index = game.index;
+
       const product = {
         id: parseInt(gameID),
+        // index: index,
         itemName: itemName,
         coverImage: coverImage,
         isWishlisted: isWishlisted,
@@ -325,12 +363,16 @@ fetch(apiUrl)
       // let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log("wishlist is: ", wishlist);
+
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       const cartGame = cart.find((game) => game.id === gameID);
+      console.log("cartGame is: ", cartGame);
       if (cartGame) {
         cartGame.isWishlisted = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       };
+      console.log("cart is: ", cart);
     };
   };
 

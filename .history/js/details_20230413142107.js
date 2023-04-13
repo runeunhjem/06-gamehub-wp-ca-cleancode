@@ -300,8 +300,11 @@ fetch(apiUrl)
       const productPlot = game.productPlot;
       const productGameplay = game.productGameplay;
       const productKeyFeatures = game.productKeyFeatures;
+      // const index = game.index;
+
       const product = {
         id: parseInt(gameID),
+        // index: index,
         itemName: itemName,
         coverImage: coverImage,
         isWishlisted: isWishlisted,
@@ -325,12 +328,16 @@ fetch(apiUrl)
       // let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      console.log("wishlist is: ", wishlist);
+
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
       const cartGame = cart.find((game) => game.id === gameID);
+      console.log("cartGame is: ", cartGame);
       if (cartGame) {
         cartGame.isWishlisted = 1;
         localStorage.setItem("cart", JSON.stringify(cart));
       };
+      console.log("cart is: ", cart);
     };
   };
 
