@@ -907,7 +907,9 @@ input {
   color: var(--color-yellow-logo);
   text-decoration: none;
   align-items: center;
-  width: 100%;
+  min-width: 320px;
+  width: 600px;
+  max-width: 100%;
   justify-content: space-between;
   a {
     display: flex;
@@ -962,16 +964,6 @@ input {
   width: 640px;
   max-width: 95vw;
   gap: 2em;
-}
-.checkout-links {
-  display: inline-flex;
-  justify-content: space-between;
-  align-items: center;
-  // margin: 0 0em 2em 0em;
-  min-width: 320px;
-  width: 536px;
-  max-width: 90%;
-  gap: 1em;
 }
 
 
