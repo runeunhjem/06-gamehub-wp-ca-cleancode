@@ -42,7 +42,7 @@ fetch(featuredApiUrl)
       };
       featured.push(game);
     };
-
+    
     if (wishlist.length > 0) {
       // Loop through each item in the wishlist
       wishlist.forEach((game) => {
@@ -52,10 +52,12 @@ fetch(featuredApiUrl)
         // If the game is not in the games array, add it
         if (index === -1) {
           // featured.push(game);
+          // console.log("featured not in wishlistis: ", featured);
         }
         // If the game is already in the games array, replace it
         else {
           featured[index] = game;
+          // console.log("featured in wishlist is: ", featured);
         }
       });
     }
@@ -64,5 +66,8 @@ fetch(featuredApiUrl)
     // Log any errors to the console
     console.error("Error:", error);
   });
+
+// console.log("All games??? after the fetch on featured.js: ", featured);
+// console.log("typeof games after the fetch on featured.js: ", typeof featured);
 
 export { featured };

@@ -56,6 +56,7 @@ fetch(featuredApiUrl)
         // If the game is already in the games array, replace it
         else {
           featured[index] = game;
+          // console.log("featured in wishlist is: ", featured);
         }
       });
     }
