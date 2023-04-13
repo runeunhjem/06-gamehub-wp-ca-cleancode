@@ -132,7 +132,9 @@ cartsummary.innerHTML += `
   <div class="amount row1"><span class="yellow">$ </span>${cartTotalPrice.toFixed(2)}</div>
   <div class="filler row2">.</div>
   <div class="filler row2"></div>
-  <div class="amount_before row2 price__before__top yellow"></div>
+  <div class="amount_before row2 price__before__top yellow">
+
+  </div>
   <div class="row3 vat">(VAT included if applicable)</div>
   <div class="row3 filler"></div>
   <div class="row3 filler"></div>
@@ -153,7 +155,9 @@ cartsummary.innerHTML += `
   </div>
   <div class="filler row7"></div>
   <div class="filler row7"></div>
-  <div class="price__before__bottom yellow row7"></div>
+  <div class="price__before__bottom yellow row7">
+
+  </div>
   <div class="row8 vat">(VAT included if applicable)</div>
   <div class="row8 filler"></div>
   <div class="filler row8"></div>
