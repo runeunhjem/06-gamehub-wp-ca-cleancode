@@ -374,7 +374,7 @@ if (sortAreOnPage) {
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
-              <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
+            <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
             </a>
           </div>
           <div class="small psnleft release-date">Release Date:</div>

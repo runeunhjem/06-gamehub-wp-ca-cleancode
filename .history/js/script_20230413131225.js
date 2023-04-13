@@ -253,6 +253,7 @@ if (filtersAreOnPage) {
         const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
         setTimeout(() => {
           const wishlistIcons = document.querySelectorAll(".wishlist-icon");
+          console.log("wishlistIcons.length is: ", wishlistIcons.length);
           wishlistIcons.forEach(function (wishlistIcon) {
             wishlistIcon.addEventListener("click", function () {
               heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -267,8 +268,9 @@ if (filtersAreOnPage) {
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
         <div class="items ${game.itemName}">
           <div class="psnleft game-title">
-            <h2 class="h4 type">${game.itemName}</h2>
-            <span class="gametitle-info">${game.platformShort} | ${ game.type } Version</span>
+            <h2 class="h4 type">${game.itemName}</h2><span class="gametitle-info">${game.platformShort} | ${
+          game.type
+        } Version</span>
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
@@ -352,9 +354,12 @@ if (sortAreOnPage) {
       .map((game) => {
         // Determine which heart icon to display based on isWishlisted
         let heartIcon = parseInt(game.isWishlisted) === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
+        // const heartIcon = wishlistedGames.includes(parseInt(game.id)) ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
         const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
+        // console.log("game before creating gamesContainer HTML: ", game);
         setTimeout(() => {
           const wishlistIcons = document.querySelectorAll(".wishlist-icon");
+          console.log("wishlistIcons.length is: ", wishlistIcons.length);
           wishlistIcons.forEach(function (wishlistIcon) {
             wishlistIcon.addEventListener("click", function () {
               heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -369,12 +374,13 @@ if (sortAreOnPage) {
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
         <div class="items ${game.itemName}">
           <div class="psnleft game-title">
-            <h2 class="h4 type">${game.itemName}</h2>
-            <span class="gametitle-info">${game.platformShort} | ${ game.type } Version</span>
+            <h2 class="h4 type">${game.itemName}</h2><span class="gametitle-info">${game.platformShort} | ${
+          game.type
+        } Version</span>
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
-              <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
+            <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
             </a>
           </div>
           <div class="small psnleft release-date">Release Date:</div>

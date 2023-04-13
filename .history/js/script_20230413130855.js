@@ -77,12 +77,17 @@ function addToCart(event) {
     return; // ignore clicks on non-add-to-cart elements
   }
   const gameID = target.dataset.id;
+
   const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
+  console.log("game is: ", game);
   const coverImage = game.coverImage;
   let quantity = 1;
   // const isWishlisted = game.isWishlisted;
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const isWishlisted = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID, 10)) >= 0 ? 1 : 0;
+  console.log("game.id is: ", game.id);
+  console.log("game.isWishlisted is: ", game.isWishlisted);
+  console.log("coverImage is: ", coverImage);
   const container = target.closest(".container");
   const itemName = container.querySelector(".game-title .type").textContent;
   const price = parseFloat(container.querySelector(".currentPrice").textContent);
@@ -90,6 +95,37 @@ function addToCart(event) {
   const total = price * quantity;
   const featured = game.featured;
   const formattedTotal = total.toFixed(2);
+
+  // const data = {
+  //   product_id: parseInt(gameID),
+  //   quantity: quantity,
+  // };
+
+  // // Send a POST request to the cart endpoint
+  // fetch((postApiURL), {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     "Consumer-Key": "ck_0a9221746a98e989919da079c6680ea1775a43c6",
+  //     "Consumer-Secret": "cs_733d7600657d23aa12748b3d9d3707f08d8eab96"
+  //   },
+  //   body: JSON.stringify(data),
+  // })
+  //   .then((response) => {
+  //     // If the response is successful, parse the JSON data
+  //     if (response.ok) {
+  //       return response.json();
+  //     }
+  //     // If the response is not successful, throw an error
+  //     throw new Error("Network response was not ok");
+  //   })
+  //   .then((result) => {
+  //     console.log("Cart updated:", result);
+  //   })
+  //   .catch((error) => {
+  //     // Log any errors to the console
+  //     console.error("Error:", error);
+  //   });
 
   const product = {
     id: parseInt(gameID),
@@ -112,6 +148,7 @@ function addToCart(event) {
     cart.push(product);
   };
   localStorage.setItem("cart", JSON.stringify(cart));
+  console.log("cart is: ", cart);
 };
 
 // ADD TO WISHLIST FUNCTION
@@ -119,21 +156,31 @@ function addToWishlist(event) {
   const target = event.target;
   if (!target.classList.contains("add-to-wishlist")) {
     return; // ignore clicks on non-add-to-wishlist elements
-  };
+  }
+  console.log("target.dataset.id is: ", target.dataset.id);
   const gameID = target.dataset.id;
+  console.log("gameID is: ", gameID);
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const existingIndex = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID));
+  console.log("existingIndex is: ", existingIndex);
   if (existingIndex >= 0) {
     // game is already in wishlist, remove it
     wishlist.splice(existingIndex, 1);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    console.log(`Game with ID ${gameID} removed from wishlist`);
     if (window.location.pathname === "/wishlist.html") {
       const icon = document.querySelector(`.wishlist-icon[data-id="${gameID}"]`);
+      console.log("icon is: ", icon);
       icon.closest(".container").remove();
+      console.log("wishlist is: ", wishlist);
     };
   } else {
+    // event.target.src = isWishlisted ? "images/ico_heart_+.svg" : "images/ico_heart.svg";
     const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
+
+    console.log("game is: ", game);
     const coverImage = game.coverImage;
+
     const container = target.closest(".container");
     const itemName = game.itemName;
     const currentPrice = parseFloat(game.currentPrice);
@@ -154,8 +201,11 @@ function addToWishlist(event) {
     const productGameplay = game.productGameplay;
     const productKeyFeatures = game.productKeyFeatures;
     const featured = game.featured;
+    // const index = game.index;
+
     const product = {
       id: parseInt(gameID),
+      // index: index,
       itemName: itemName,
       coverImage: coverImage,
       isWishlisted: isWishlisted,
@@ -176,15 +226,20 @@ function addToWishlist(event) {
       productKeyFeatures: productKeyFeatures,
       featured: featured
     };
+
+    // let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
     wishlist.push(product);
     localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    console.log("wishlist is: ", wishlist);
 
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartGame = cart.find((game) => parseInt(game.id) === parseInt(gameID));
+    console.log("cartGame is: ", cartGame);
     if (cartGame) {
       cartGame.isWishlisted = 1;
       localStorage.setItem("cart", JSON.stringify(cart));
     };
+    console.log("cart is: ", cart);
   };
 };
 
@@ -198,6 +253,7 @@ if (featuredContainer) {
   featuredContainer.addEventListener("click", addToWishlist);
 };
 
+// add event listener to the clear cart & clear wishlist buttons
 if (document.querySelector(".clear-cart")) {
   document.querySelector(".clear-cart").addEventListener("click", clearCart);
 };
@@ -250,9 +306,12 @@ if (filtersAreOnPage) {
       .map((game) => {
         // Determine which heart icon to display based on isWishlisted
         let heartIcon = parseInt(game.isWishlisted) === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
+        // const heartIcon = wishlistedGames.includes(parseInt(game.id)) ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
         const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
+        // console.log("game before creating gamesContainer HTML: ", game);
         setTimeout(() => {
           const wishlistIcons = document.querySelectorAll(".wishlist-icon");
+          console.log("wishlistIcons.length is: ", wishlistIcons.length);
           wishlistIcons.forEach(function (wishlistIcon) {
             wishlistIcon.addEventListener("click", function () {
               heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -267,8 +326,9 @@ if (filtersAreOnPage) {
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
         <div class="items ${game.itemName}">
           <div class="psnleft game-title">
-            <h2 class="h4 type">${game.itemName}</h2>
-            <span class="gametitle-info">${game.platformShort} | ${ game.type } Version</span>
+            <h2 class="h4 type">${game.itemName}</h2><span class="gametitle-info">${game.platformShort} | ${
+          game.type
+        } Version</span>
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
@@ -352,9 +412,12 @@ if (sortAreOnPage) {
       .map((game) => {
         // Determine which heart icon to display based on isWishlisted
         let heartIcon = parseInt(game.isWishlisted) === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
+        // const heartIcon = wishlistedGames.includes(parseInt(game.id)) ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
         const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
+        // console.log("game before creating gamesContainer HTML: ", game);
         setTimeout(() => {
           const wishlistIcons = document.querySelectorAll(".wishlist-icon");
+          console.log("wishlistIcons.length is: ", wishlistIcons.length);
           wishlistIcons.forEach(function (wishlistIcon) {
             wishlistIcon.addEventListener("click", function () {
               heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -369,12 +432,13 @@ if (sortAreOnPage) {
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
         <div class="items ${game.itemName}">
           <div class="psnleft game-title">
-            <h2 class="h4 type">${game.itemName}</h2>
-            <span class="gametitle-info">${game.platformShort} | ${ game.type } Version</span>
+            <h2 class="h4 type">${game.itemName}</h2><span class="gametitle-info">${game.platformShort} | ${
+          game.type
+        } Version</span>
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
-              <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
+            <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
             </a>
           </div>
           <div class="small psnleft release-date">Release Date:</div>

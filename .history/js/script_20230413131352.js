@@ -370,11 +370,13 @@ if (sortAreOnPage) {
         <div class="items ${game.itemName}">
           <div class="psnleft game-title">
             <h2 class="h4 type">${game.itemName}</h2>
-            <span class="gametitle-info">${game.platformShort} | ${ game.type } Version</span>
+            <span class="gametitle-info">${game.platformShort} | ${
+          game.type
+        } Version</span>
           </div>
           <div class="game-cover">
             <a href="details.html?id=${parseInt(game.id)}" class="results-list">
-              <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
+            <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
             </a>
           </div>
           <div class="small psnleft release-date">Release Date:</div>
