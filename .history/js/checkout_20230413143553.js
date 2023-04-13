@@ -235,7 +235,7 @@ cartsummary.innerHTML += `
   </div>
   <div class="filler row7"></div>
   <div class="filler row7"></div>
-  <div class="price__before__bottom yellow row7"></div>
+  <div class="price__before__bottom yellow row7">  </div>
   <div class="row8 vat">(VAT included if applicable)</div>
   <div class="row8 filler"></div>
   <div class="filler row8"></div>

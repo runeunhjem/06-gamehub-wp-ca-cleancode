@@ -141,7 +141,7 @@ function validateForm(event) {
       payNowButton.innerText = "Form Error";
       payNowButton.className = "buttonNotReady";
     };
-  };
+  }
 };
 
 // EVENTLISTENER TO CHECK IF SUBMIT BUTTON IS CLICKED
@@ -163,11 +163,11 @@ function successMessage() {
     <p>Your payment was successful</>
     <p>We are printing your receipt</p>
   `;
-  setTimeout(closeSuccessMessage, 3000); //RESET CONTACT FORM AFTER 3 SECONDS
+  setTimeout(closeSuccessMessage, 3000); //RESET CONTACT FORM AFTER 4 SECONDS
   function redirect() {
     window.location.href = "../checkout_success.html";
-  };
-  // set a timer to call the redirect function after 4.2 seconds
+  }
+  // set a timer to call the redirect function after 5 seconds
   setTimeout(redirect, 4200);
 };
 
@@ -198,23 +198,30 @@ function checkLength(value, len) {
 
 // ORDER SUMMARY
 const cart = JSON.parse(localStorage.getItem("cart")) || [];
+console.log("cart on checkout page is: ", cart);
 let totalQuantity = 0;
 let totalPrice = 0;
 cart.forEach((item) => {
   totalQuantity += item.quantity;
+  console.log("totalQuantity is: ", totalQuantity);
   totalPrice += parseFloat(item.price) * item.quantity; // updated calculation
+  console.log("totalPrice is: ", totalPrice);
 });
 
 const freight = 4.95;
 const toPayPrice = freight + totalPrice;
 const cartsummary = document.getElementById("checkout__cart");
+// const cartCountElement = document.getElementById("cart-count");
+// cartCountElement.textContent = `A total of ${totalQuantity} ${itemText} and $ ${totalPrice.toFixed(2)}`;
 cartsummary.innerHTML += `
   <div class="order row1">Games:</div>
   <div class="row1 checkout_items yellow">(${parseInt(totalQuantity)} items)</div>
   <div class="amount row1"><span class="yellow">$ </span>${parseFloat(totalPrice.toFixed(2))}</div>
   <div class="filler row2">.</div>
   <div class="filler row2"></div>
-  <div class="amount_before row2 price__before__top yellow"></div>
+  <div class="amount_before row2 price__before__top yellow">
+
+  </div>
   <div class="row3 vat">(VAT included if applicable)</div>
   <div class="row3 filler"></div>
   <div class="row3 filler"></div>
@@ -235,7 +242,9 @@ cartsummary.innerHTML += `
   </div>
   <div class="filler row7"></div>
   <div class="filler row7"></div>
-  <div class="price__before__bottom yellow row7"></div>
+  <div class="price__before__bottom yellow row7">
+
+  </div>
   <div class="row8 vat">(VAT included if applicable)</div>
   <div class="row8 filler"></div>
   <div class="filler row8"></div>
