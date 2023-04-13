@@ -14,7 +14,7 @@ setTimeout(() => {
   // Generate the HTML for all the games
   const html = games
   .map((game) => {
-
+    
     return `
     <div class="thumb-box">
       <div class="thumbTitle">${game.itemName}</div>
@@ -30,14 +30,13 @@ setTimeout(() => {
 
   thumbsContainer.innerHTML = html;
 }, 800);
-
 //Show/Hide thumbnails
-  hideThumbs.addEventListener("click", function () {
-    if (hideThumbs.innerHTML === "Hide Thumbnails") {
-      hideThumbs.innerHTML = "Show Thumbnails";
-      hideTumbsContainer.classList.add("hide");
-    } else {
-      hideThumbs.innerHTML = "Hide Thumbnails";
-      hideTumbsContainer.classList.remove("hide");
-    }
-  });
+    hideThumbs.addEventListener("click", function () {
+      if (hideThumbs.innerHTML === "Hide Thumbnails") {
+        hideThumbs.innerHTML = "Show Thumbnails";
+        hideTumbsContainer.classList.add("hide");
+      } else {
+        hideThumbs.innerHTML = "Hide Thumbnails";
+        hideTumbsContainer.classList.remove("hide");
+      }
+    });

@@ -14,6 +14,10 @@ setTimeout(() => {
   // Generate the HTML for all the games
   const html = games
   .map((game) => {
+    // Determine which heart icon to display based on isWishlisted
+    let heartIcon = parseInt(game.isWishlisted) === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
+    // const heartIcon = wishlistedGames.includes(parseInt(game.id)) ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
+    const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
 
     return `
     <div class="thumb-box">
@@ -30,14 +34,13 @@ setTimeout(() => {
 
   thumbsContainer.innerHTML = html;
 }, 800);
-
 //Show/Hide thumbnails
-  hideThumbs.addEventListener("click", function () {
-    if (hideThumbs.innerHTML === "Hide Thumbnails") {
-      hideThumbs.innerHTML = "Show Thumbnails";
-      hideTumbsContainer.classList.add("hide");
-    } else {
-      hideThumbs.innerHTML = "Hide Thumbnails";
-      hideTumbsContainer.classList.remove("hide");
-    }
-  });
+    hideThumbs.addEventListener("click", function () {
+      if (hideThumbs.innerHTML === "Hide Thumbnails") {
+        hideThumbs.innerHTML = "Show Thumbnails";
+        hideTumbsContainer.classList.add("hide");
+      } else {
+        hideThumbs.innerHTML = "Hide Thumbnails";
+        hideTumbsContainer.classList.remove("hide");
+      }
+    });
