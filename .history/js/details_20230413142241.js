@@ -322,6 +322,7 @@ fetch(apiUrl)
         productKeyFeatures: productKeyFeatures,
       };
 
+      
       wishlist.push(product);
       localStorage.setItem("wishlist", JSON.stringify(wishlist));
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
