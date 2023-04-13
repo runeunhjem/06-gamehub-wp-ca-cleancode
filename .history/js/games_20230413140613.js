@@ -1,5 +1,8 @@
+// VARIABLES
+
 const apiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?per_page=50";
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+console.log("wishlist is: ", wishlist);
 const games = [];
 
 // Send a GET request to the API endpoint
@@ -60,5 +63,8 @@ fetch(apiUrl)
     // Log any errors to the console
     console.error("Error:", error);
   });
+
+console.log("All games??? after the fetch on games.js: ", games);
+console.log("typeof games after the fetch on games.js: ", typeof games);
 
 export { games };
