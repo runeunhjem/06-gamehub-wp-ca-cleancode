@@ -9,6 +9,7 @@ const typeSellGames = document.querySelector("#type");
 const typeSellGamesError = document.querySelector("#typeSellGamesError");
 const paypalSellGames = document.querySelector("#paypal");
 const paypalSellGamesError = document.querySelector("#paypalSellGamesError");
+// let formSubmitted = false;
 
 // CHANGE PLACEHOLDERS TO INPUT TIPS ON FOCUS
 titleSellGames.addEventListener("focus", function () {
