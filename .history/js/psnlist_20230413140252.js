@@ -42,7 +42,7 @@ setTimeout(() => {
         </div>
         <div class="game-cover">
           <a href="details.html?id=${parseInt(game.id)}" class="results-list">
-            <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
+          <img class="game-img" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
           </a>
         </div>
         <div class="small psnleft release-date">Release Date:</div>
@@ -82,13 +82,13 @@ setTimeout(() => {
           <span class="dollar yellow">.</span>${parseFloat(game.beforePrice)}
         </div>
       </div>
-      <div class="psn__buttons">
-        <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
-        <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
-          <div class="cta">View Details</div>
-        </a>
+        <div class="psn__buttons">
+          <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
+          <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
+            <div class="cta">View Details</div>
+          </a>
+        </div>
       </div>
-    </div>
     `;
   })
     .join("");
@@ -99,10 +99,13 @@ setTimeout(() => {
 setTimeout(() => {
   // Select all game containers
   const gameContainers = document.querySelectorAll(".game-cards");
+  // console.log("gameContainers is: ", gameContainers);
   // Get the count of game containers
   const gameCount = gameContainers.length;
+  console.log("gameCount is: ", gameCount);
   // Select the element where you want to show the game count
   const gameCountElement = document.querySelector(".number-of-products");
+  // console.log("gameCountElement is: ", gameCountElement);
   // Set the text content of the element to the game count
   gameCountElement.textContent = `Number of games on site: ${gameCount}`;
 }, 1000);
