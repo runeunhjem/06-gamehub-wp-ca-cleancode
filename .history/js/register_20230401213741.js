@@ -9,6 +9,7 @@ const repeatPasswordRegister = document.querySelector("#repeat-password");
 const repeatPasswordRegisterError = document.querySelector("#repeat-password_registerError");
 const emailRegister = document.querySelector("#email");
 const emailRegisterError = document.querySelector("#email_registerError");
+// let formSubmitted = false;
 
 // CHANGE PLACEHOLDERS TO INPUT TIPS ON FOCUS
 usernameRegister.addEventListener("focus", function () {
@@ -128,5 +129,6 @@ function successMessage() {
 function validateEmail(email) {
   const regEx = /\S+@\S+\.\S/; // The \S+ means one or more non-whitespace characters
   const patternMatches = regEx.test(email);
+  // console.log(email.value);
   return patternMatches;
 };
