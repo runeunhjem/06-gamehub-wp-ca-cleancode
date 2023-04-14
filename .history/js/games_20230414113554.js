@@ -1,24 +1,23 @@
-// FEATURED API
-const featuredApiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?featured=true";
-const featured = [];
+// const apiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?per_page=50";
+// let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+// const games = [];
 
-let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-
-// async function fetchFeaturedGames() {
-//   try {
-//     const response = await fetch(featuredApiUrl);
-
-//     if (!response.ok) {
-//       throw new Error("Network response was not ok");
+// // Send a GET request to the API endpoint
+// fetch(apiUrl)
+//   .then((response) => {
+//     // If the response is successful, parse the JSON data
+//     if (response.ok) {
+//       return response.json();
 //     }
-
-//     const data = await response.json();
-//     const featured = [];
-
+//     // If the response is not successful, throw an error
+//     throw new Error("Network response was not ok");
+//   })
+//   .then((data) => {
+//     // Loop through each object in the data array and extract attributes
 //     for (const item of data) {
 //       const attributes = item.attributes.map((attr) => ({ [attr.name]: attr.terms[0].name }));
 //       const game = {
-//         productId: item.id,
+//         productId: item.id, // The actual product WP/WC ID
 //         id: parseInt(attributes[0].gameId),
 //         itemName: attributes[1].itemName,
 //         platform: attributes[2].platform,
@@ -38,47 +37,47 @@ let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 //         productKeyFeatures: attributes[16].productKeyFeatures,
 //         featured: parseInt(attributes[17].featured),
 //       };
-//       featured.push(game);
+//       games.push(game);
 //     }
-
 //     if (wishlist.length > 0) {
+//       // Loop through each item in the wishlist
 //       wishlist.forEach((game) => {
-//         const index = featured.findIndex((g) => g.id === game.id);
+//         // Check if the game is already in the games array
+//         const index = games.findIndex((g) => g.id === game.id);
 
+//         // If the game is not in the games array, add it
 //         if (index === -1) {
-//           // featured.push(game);
-//         } else {
-//           featured[index] = game;
+//           games.push(game);
+//         }
+//         // If the game is already in the games array, replace it
+//         else {
+//           games[index] = game;
 //         }
 //       });
 //     }
-
-//     return featured;
-//   } catch (error) {
+//   })
+//   .catch((error) => {
+//     // Log any errors to the console
 //     console.error("Error:", error);
-//   }
-// }
+//   });
 
-// const featured = await fetchFeaturedGames();
-// export { featured };
+// export { games };
 
+const apiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?per_page=50";
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+const games = [];
 
-// Send a GET request to the API endpoint
-fetch(featuredApiUrl)
-  .then((response) => {
-    // If the response is successful, parse the JSON data
-    if (response.ok) {
-      return response.json();
+async function getGameData() {
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
-    // If the response is not successful, throw an error
-    throw new Error("Network response was not ok");
-  })
-  .then((data) => {
-    // Loop through each object in the data array and extract attributes
+    const data = await response.json();
     for (const item of data) {
       const attributes = item.attributes.map((attr) => ({ [attr.name]: attr.terms[0].name }));
       const game = {
-        productId: item.id, // The actual product WP/WC ID
+        productId: item.id,
         id: parseInt(attributes[0].gameId),
         itemName: attributes[1].itemName,
         platform: attributes[2].platform,
@@ -98,29 +97,23 @@ fetch(featuredApiUrl)
         productKeyFeatures: attributes[16].productKeyFeatures,
         featured: parseInt(attributes[17].featured),
       };
-      featured.push(game);
-    };
-
+      games.push(game);
+    }
     if (wishlist.length > 0) {
-      // Loop through each item in the wishlist
       wishlist.forEach((game) => {
-        // Check if the game is already in the games array
-        const index = featured.findIndex((g) => g.id === game.id);
-
-        // If the game is not in the games array, add it
+        const index = games.findIndex((g) => g.id === game.id);
         if (index === -1) {
-          // featured.push(game);
-        }
-        // If the game is already in the games array, replace it
-        else {
-          featured[index] = game;
+          games.push(game);
+        } else {
+          games[index] = game;
         }
       });
     }
-  })
-  .catch((error) => {
-    // Log any errors to the console
+  } catch (error) {
     console.error("Error:", error);
-  });
+  }
+}
 
-export { featured };
+getGameData();
+
+export { games };

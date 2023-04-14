@@ -1,3 +1,4 @@
+
 const apiUrl = "https://wordpress.runeunhjem.no/wp-json/wc/store/products?per_page=50";
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 const games = [];

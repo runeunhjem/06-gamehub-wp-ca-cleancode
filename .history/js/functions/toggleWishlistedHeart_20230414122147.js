@@ -11,12 +11,7 @@ function toggleWishlistedHeart(delay) {
         this.classList.toggle("far");
         this.classList.toggle("fas");
       });
-      wishlistIcon.addEventListener("touchstart", function () {
-        heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
-        this.src = heartIcon;
-        this.classList.toggle("far");
-        this.classList.toggle("fas");
-      });
+      
     });
   }, delay);
 };
