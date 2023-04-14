@@ -2004,7 +2004,7 @@ legend {
 // .clear-cart:hover {
 //   text-decoration: underline;
 // }
-.clear-wishlist:hover, .wl-buttons:hover, .clear-cart:hover, .remove-button:hover, .cta:hover {
+.clear-wishlist:hover, .wl-buttons:hover, .clear-cart:hover, .remove-button:hover, .cta:hover,  {
   color: var(--color-black);
   background-color: var(--color-yellow-logo);
   border: 1px solid var(--color-black);
@@ -2013,7 +2013,7 @@ legend {
     color: var(--color-black);
   }
 }
-.buy-games__left:hover, .goto-cart:hover {
+.buy-games__left:hover {
   a:hover, img:hover {
     color: var(--color-black);
     background-color: var(--color-yellow-logo);

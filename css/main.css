@@ -2009,7 +2009,7 @@ legend {
   color: var(--color-black);
 }
 
-.buy-games__left:hover a:hover, .buy-games__left:hover img:hover {
+.buy-games__left:hover a:hover, .buy-games__left:hover img:hover, .goto-cart:hover a:hover, .goto-cart:hover img:hover {
   color: var(--color-black);
   background-color: var(--color-yellow-logo);
   border: 1px solid var(--color-black);
