@@ -1,6 +1,6 @@
 import { games } from "./games.js";
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-
+import { gamesContainerHtmlDefault } from "./variables/gamesContainerHtml-default.js";
 const gamesContainer = document.getElementById("games-container");
 export { gamesContainer };
 

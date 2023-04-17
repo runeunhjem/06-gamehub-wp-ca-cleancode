@@ -2,7 +2,6 @@ import { games } from "./games.js";
 const thumbsContainer = document.getElementById("thumb-grid");
 const hideTumbsContainer = document.getElementById("thumb-container");
 const hideThumbs = document.getElementById("hide-thumbs");
-
 games.forEach((game) => {
   // Check if the game is in the wishlisted games array
   if (wishlistedGames.includes(parseInt(game.id))) {

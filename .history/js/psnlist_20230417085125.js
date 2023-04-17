@@ -1,6 +1,6 @@
 import { games } from "./games.js";
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-
+imp
 const gamesContainer = document.getElementById("games-container");
 export { gamesContainer };
 
