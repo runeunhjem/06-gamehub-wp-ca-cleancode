@@ -205,14 +205,14 @@ cart.forEach((item) => {
 });
 
 const freight = 4.95;
-const toPayPrice = freight + totalPrice;
+const toPayPrice = (freight + totalPrice;
 const cartsummary = document.getElementById("checkout__cart");
 cartsummary.innerHTML += `
   <div class="order row1">Games:</div>
   <a href="cart.html" alt="Go To Cart">
     <div class="row1 checkout_items yellow">(${parseInt(totalQuantity)} items)</div>
   </a>
-  <div class="amount row1"><span class="yellow">$ </span>${totalPrice.toFixed(2)}</div>
+  <div class="amount row1"><span class="yellow">$ </span>${parseFloat(totalPrice.toFixed(2))}</div>
   <div class="filler row2">.</div>
   <div class="filler row2"></div>
   <div class="amount_before row2 price__before__top yellow"></div>
