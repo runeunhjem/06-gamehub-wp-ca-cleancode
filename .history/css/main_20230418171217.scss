@@ -848,12 +848,15 @@ input {
   margin-top: 5px;
 }
 .logout {
+  display: grid;
   text-align: right;
   color: var(--color-yellow-logo);
-  margin-top: 6px;
+  margin-top: 2px;
+  margin-left
+}
+.logout {
   display: inherit;
 }
-
 .stats, .checkout__cart {
   display: grid;
   grid-template-columns: 80px 80px 100px;

@@ -231,12 +231,7 @@ if (filtersAreOnPage) {
   filterSelect.addEventListener("change", (event) => {
     const selectedFilter = event.target.value;
     let filteredGames = games;
-    if (
-      selectedFilter === "Playstation 4" ||
-      selectedFilter === "Playstation 5" ||
-      selectedFilter === "XBOX" ||
-      selectedFilter === "Nintendo Switch"
-    ) {
+    if (selectedFilter === "Playstation 4" || selectedFilter === "Playstation 5" || selectedFilter === "Playstation 5") {
       filteredGames = filteredGames.filter((game) => game.platform === selectedFilter);
     } else if (selectedFilter === "Full Disc Versions" || selectedFilter === "Key only Versions") {
       filteredGames = filteredGames.filter((game) => {

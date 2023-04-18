@@ -235,7 +235,7 @@ if (filtersAreOnPage) {
       selectedFilter === "Playstation 4" ||
       selectedFilter === "Playstation 5" ||
       selectedFilter === "XBOX" ||
-      selectedFilter === "Nintendo Switch"
+      selectedFilter === "Playstation 5"
     ) {
       filteredGames = filteredGames.filter((game) => game.platform === selectedFilter);
     } else if (selectedFilter === "Full Disc Versions" || selectedFilter === "Key only Versions") {

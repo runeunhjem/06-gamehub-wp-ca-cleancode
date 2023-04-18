@@ -112,6 +112,7 @@ footer a {
   color: var(--color-white);
   font-size: 1rem;
   text-decoration: none;
+  padding-left: 0.1em;
 }
 
 .explore_none,
@@ -838,10 +839,10 @@ input {
 }
 
 .logout {
-  display: grid;
   text-align: right;
   color: var(--color-yellow-logo);
-  margin-top: 2px;
+  margin-top: 6px;
+  display: inherit;
 }
 
 .stats, .checkout__cart {
@@ -1393,6 +1394,7 @@ legend {
   align-items: center;
   border-radius: var(--border-radius-boxes);
   border: none;
+  padding-left: 0.5em;
 }
 
 #search-field {
@@ -2579,7 +2581,6 @@ a:hover {
     width: 8vw;
   }
   .logout {
-    margin-right: 0.2em;
     padding-right: 5px;
   }
   .main-menu {
