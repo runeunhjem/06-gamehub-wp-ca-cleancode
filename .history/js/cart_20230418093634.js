@@ -151,7 +151,7 @@ cartsummary.innerHTML += `
   <div class="total row6">Total:</div>
   <a href="cart.html" alt="Go To Cart">
     <div class="checkout_items yellow row6">(${cartTotalQuantity} items)</div>
-  </a>
+    
   <div class="totalamount row6">
     <span class="yellow">$ </span>${toPayPrice.toFixed(2)}
   </div>

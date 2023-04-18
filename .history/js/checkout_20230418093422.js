@@ -209,8 +209,8 @@ const cartsummary = document.getElementById("checkout__cart");
 cartsummary.innerHTML += `
   <div class="order row1">Games:</div>
   <a href="cart.html" alt="Go To Cart">
-    <div class="row1 checkout_items yellow">(${parseInt(totalQuantity)} items)</div>
-  </a>
+  <div class="row1 checkout_items yellow">(${parseInt(totalQuantity)} items)</div>
+  
   <div class="amount row1"><span class="yellow">$ </span>${parseFloat(totalPrice.toFixed(2))}</div>
   <div class="filler row2">.</div>
   <div class="filler row2"></div>

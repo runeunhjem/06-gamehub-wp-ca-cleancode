@@ -149,9 +149,7 @@ cartsummary.innerHTML += `
   </div>
   <div class="filler change row5"></div>
   <div class="total row6">Total:</div>
-  <a href="cart.html" alt="Go To Cart">
-    <div class="checkout_items yellow row6">(${cartTotalQuantity} items)</div>
-  </a>
+  <div class="checkout_items yellow row6">(${cartTotalQuantity} items)</div>
   <div class="totalamount row6">
     <span class="yellow">$ </span>${toPayPrice.toFixed(2)}
   </div>

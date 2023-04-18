@@ -129,8 +129,7 @@ cartCountElement.textContent = `A total of ${cartTotalQuantity} ${itemText} and 
 cartsummary.innerHTML += `
   <div class="order row1">Games:</div>
   <a href="cart.html" alt="Go To Cart">
-    <div class="row1 checkout_items yellow">(${cartTotalQuantity} items)</div>
-  </a>
+  <div class="row1 checkout_items yellow">(${cartTotalQuantity} items)</div>
   <div class="amount row1"><span class="yellow">$ </span>${cartTotalPrice.toFixed(2)}</div>
   <div class="filler row2">.</div>
   <div class="filler row2"></div>
@@ -149,9 +148,7 @@ cartsummary.innerHTML += `
   </div>
   <div class="filler change row5"></div>
   <div class="total row6">Total:</div>
-  <a href="cart.html" alt="Go To Cart">
-    <div class="checkout_items yellow row6">(${cartTotalQuantity} items)</div>
-  </a>
+  <div class="checkout_items yellow row6">(${cartTotalQuantity} items)</div>
   <div class="totalamount row6">
     <span class="yellow">$ </span>${toPayPrice.toFixed(2)}
   </div>
