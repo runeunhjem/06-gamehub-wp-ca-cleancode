@@ -201,6 +201,7 @@ let totalPrice = 0;
 cart.forEach((item) => {
   totalQuantity += item.quantity;
   totalPrice += parseFloat(item.price) * item.quantity; // updated calculation
+
 });
 
 const freight = 4.95;
