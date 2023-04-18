@@ -1,7 +1,7 @@
 import { games } from "./games.js";
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
 const gamesContainer = document.getElementById("games-container");
-export { gamesContainer };
+// export { gamesContainer };
 document.addEventListener("DOMContentLoaded", () => {
 
     // Get the array of wishlisted games from the local storage

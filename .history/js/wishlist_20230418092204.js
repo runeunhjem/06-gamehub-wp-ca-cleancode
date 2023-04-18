@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
 
-  setTimeout(() => {
+  // setTimeout(() => {
     // Iterate over the wishlisted games array and create a new HTML element for each game
     wishlist.forEach((e, index) => {
       const gameID = parseInt(e.id);
@@ -100,5 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       `;
     });
-  }, 1000);
+  // }, 1000);
 });

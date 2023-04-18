@@ -1,8 +1,8 @@
 import { games } from "./games.js";
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-const gamesContainer = document.getElementById("games-container");
-export { gamesContainer };
 document.addEventListener("DOMContentLoaded", () => {
+    const gamesContainer = document.getElementById("games-container");
+    // export { gamesContainer };
 
     // Get the array of wishlisted games from the local storage
     const wishlistedGames = JSON.parse(localStorage.getItem("wishlist")) || [];

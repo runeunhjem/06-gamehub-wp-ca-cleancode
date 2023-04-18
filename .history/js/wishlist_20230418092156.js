@@ -100,5 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       `;
     });
-  }, 1000);
+  // }, 1000);
 });

@@ -1,23 +1,24 @@
-import { games } from "./games.js";
+import { featured } from "./featured.js";
 import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
-const gamesContainer = document.getElementById("games-container");
-export { gamesContainer };
+
 document.addEventListener("DOMContentLoaded", () => {
+  const featuredContainer = document.querySelector(".featured-container");
+  const hideButton = document.getElementById("hide");
 
-    // Get the array of wishlisted games from the local storage
-    const wishlistedGames = JSON.parse(localStorage.getItem("wishlist")) || [];
+  // Get the array of wishlisted games from the local storage
+  const wishlistedGames = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-    games.forEach((game) => {
-      // Check if the game is in the wishlisted games array
-      if (wishlistedGames.includes(parseInt(game.id))) {
-        // If the game is wishlisted, set its isWishlisted value to 1
-        game.isWishlisted = 1;
-      };
-    });
+  featured.forEach((game) => {
+    // Check if the game is in the wishlisted games array
+    if (wishlistedGames.includes(parseInt(game.id))) {
+      // If the game is wishlisted, set its isWishlisted value to 1
+      game.isWishlisted = 1;
+    }
+  });
 
-    setTimeout(() => {
-      // Generate the HTML for all the games
-      const html = games
+  setTimeout(() => {
+    // Generate the HTML for all the games
+    const html = featured
       .map((game) => {
         // Determine which heart icon to display based on isWishlisted
         let heartIcon = parseInt(game.isWishlisted) === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
@@ -61,9 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="togglewishlist add-to-wishlist">
               <span class="small psnright" href="wishlist.html">
-                <img class="remove small psnright add-to-wishlist wishlist-icon ${
-                  game.isWishlisted === 1 ? "fas" : "far"
-                }" src="${heartIcon}" alt="Add to wishlist" data-id="${parseInt(game.id)}">
+                <img class="remove small psnright add-to-wishlist wishlist-icon ${ game.isWishlisted === 1 ? "fas" : "far" }" src="${heartIcon}" alt="Add to wishlist" data-id="${parseInt(game.id)}">
               </span>
             </div>
             <div class="price psnright">
@@ -76,26 +75,25 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
           <div class="psn__buttons">
             <div class="cta add-to-cart" data-id="${parseInt(game.id)}">Add to cart</div>
-            <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
-              <div class="cta">View Details</div>
-            </a>
+              <a href="details.html?id=${parseInt(game.id)}" class="results-list" role="button">
+                <div class="cta">View Details</div>
+              </a>
+            </div>
           </div>
-        </div>
-        `;
-      })
+          `;
+        })
         .join("");
 
-      gamesContainer.innerHTML = html;
-    }, 800);
+        featuredContainer.innerHTML = html;
+      }, 1200);
 
-    setTimeout(() => {
-      // Select all game containers
-      const gameContainers = document.querySelectorAll(".game-cards");
-      // Get the count of game containers
-      const gameCount = gameContainers.length;
-      // Select the element where you want to show the game count
-      const gameCountElement = document.querySelector(".number-of-products");
-      // Set the text content of the element to the game count
-      gameCountElement.textContent = `Number of games on site: ${gameCount}`;
-    }, 1000);
-  });
+      //Show/Hide featured products
+      hideButton.addEventListener("click", function () {
+        if (hideButton.innerHTML === "Hide Featured") {
+          hideButton.innerHTML = "Show Featured";
+          featuredContainer.classList.add("hide");
+        } else {
+          hideButton.innerHTML = "Hide Featured";
+          featuredContainer.classList.remove("hide");
+        }
+      });

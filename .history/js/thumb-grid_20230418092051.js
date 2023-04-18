@@ -1,3 +1,4 @@
+// 
 import { games } from "./games.js";
 document.addEventListener("DOMContentLoaded", () => {
   const thumbsContainer = document.getElementById("thumb-grid");
