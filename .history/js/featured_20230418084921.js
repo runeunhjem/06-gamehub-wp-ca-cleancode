@@ -4,6 +4,7 @@ const featured = [];
 
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
+
 // Send a GET request to the API endpoint
 fetch(featuredApiUrl)
   .then((response) => {
