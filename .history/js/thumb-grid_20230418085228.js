@@ -1,6 +1,6 @@
 import { games } from "./games.js";
 const thumbsContainer = document.getElementById("thumb-grid");
-const hideThumbsContainer = document.getElementById("thumb-container");
+const hideTumbsContainer = document.getElementById("thumb-container");
 const hideThumbs = document.getElementById("hide-thumbs");
 
 games.forEach((game) => {
@@ -36,9 +36,9 @@ setTimeout(() => {
   hideThumbs.addEventListener("click", function () {
     if (hideThumbs.innerHTML === "Hide Thumbnails") {
       hideThumbs.innerHTML = "Show Thumbnails";
-      hideThumbsContainer.classList.add("hide");
+      hideTumbsContainer.classList.add("hide");
     } else {
       hideThumbs.innerHTML = "Hide Thumbnails";
-      hideThumbsContainer.classList.remove("hide");
+      hideTumbsContainer.classList.remove("hide");
     }
   });
