@@ -588,13 +588,14 @@ input {
     .quick_buttons {
       display: flex;
       justify-content: space-between;
+      width
       max-width: 100%;
       gap: 1em;
       margin-top: 1em;
       margin-bottom: 1.5em;
       a {
         display: flex;
-        width: 152px;
+        width: 167px;
         height: 40px;
         text-decoration: none;
         justify-content: space-evenly;

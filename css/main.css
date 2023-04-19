@@ -571,14 +571,14 @@ input {
 .index_sign-in .quick_buttons, .sellgames .quick_buttons {
   display: flex;
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 100%;
   gap: 1em;
   margin-top: 1em;
   margin-bottom: 1.5em;
 }
 .index_sign-in .quick_buttons a, .sellgames .quick_buttons a {
   display: flex;
-  width: 167px;
+  width: 152px;
   height: 40px;
   text-decoration: none;
   justify-content: space-evenly;
