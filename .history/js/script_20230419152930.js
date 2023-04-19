@@ -350,6 +350,9 @@ if (sortAreOnPage) {
       sortedGames = sortedGames.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
     } else if (selectedSort === "Release Date (Oldest First)") {
       sortedGames = sortedGames.sort((a, b) => new Date(a.releaseDate) - new Date(b.releaseDate));
+
+
+
     } else if (selectedSort === "Name (A to Z)") {
       sortedGames = sortedGames.sort((a, b) => a.itemName.localeCompare(b.itemName));
     } else if (selectedSort === "Name (Z to A)") {
