@@ -102,7 +102,7 @@ fetch(apiUrl)
                 <div class="container game-cards" data-filter="${game.platform}-${game.type}">
                   <div class="game-details">
                     <div class="psnleft game-title">
-                      <h4 class="yellow type">${game.platformShort} | ${game.type} Version</h4>
+                      <h4 class="h4 yellow type">${game.platformShort} | ${game.type} Version</h4>
                     </div>
                     <div class="game-cover">
                       <a href=${
