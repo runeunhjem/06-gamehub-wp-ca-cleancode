@@ -105,13 +105,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const gameContainers = document.querySelectorAll(".game-cards");
       // Get the count of game containers
       const gameCount = gameContainers.length;
-      if (gameContainers.length === 0) {
-        location.reload();
-        console.log(gameContainers.length);
-      }
       // Select the element where you want to show the game count
       const gameCountElement = document.querySelector(".number-of-products");
       // Set the text content of the element to the game count
       gameCountElement.textContent = `Number of games on site: ${gameCount}`;
     }, 1000);
   });
+
+  if (gameContainers.length === 0) {
+    location.reload();
+  }
