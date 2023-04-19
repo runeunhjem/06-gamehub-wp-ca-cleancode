@@ -13,7 +13,7 @@ let formSubmitted = false;
 
 // CHANGE PLACEHOLDERS TO INPUT TIPS ON FOCUS
 titleSellGames.addEventListener("focus", function () {
-  titleSellGames.placeholder = "Min 1 character";
+  titleSellGames.placeholder = "Min 1 characters";
 });
 titleSellGames.addEventListener("blur", function () {
   titleSellGames.placeholder = "Game Title";
@@ -119,8 +119,7 @@ function successMessage() {
   confirmSuccess.style.display = "block";
   confirmSuccess.innerHTML = `
     <p class="successful">Thank you!</p>
-    <p class="successful">We will send you an email</p>
-    <p class="successful">when the game is approved</p>
+    <p class="successful">We will send you an email when the game is approved</p>
     <p class="successful">Taking you to games...</p>
   `;
   setTimeout(function () {

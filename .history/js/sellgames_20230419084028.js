@@ -119,8 +119,7 @@ function successMessage() {
   confirmSuccess.style.display = "block";
   confirmSuccess.innerHTML = `
     <p class="successful">Thank you!</p>
-    <p class="successful">We will send you an email</p>
-    <p class="successful">when the game is approved</p>
+    <p class="successful">We will send you an email when the game is approved</p>
     <p class="successful">Taking you to games...</p>
   `;
   setTimeout(function () {
