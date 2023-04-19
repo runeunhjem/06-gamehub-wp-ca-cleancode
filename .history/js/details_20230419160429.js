@@ -66,10 +66,10 @@ fetch(apiUrl)
 
     // CREATE HTML WITH DEATILS FROM API
     function createDetails() {
-      if (games.length === 0) {
+      if (featured.length === 0) {
         // As per Abi's advice in last class session to get functional code first, not optimized.
         location.reload();
-        console.log(games.length);
+        console.log(featured.length);
       }
       const queryString = window.location.search;
       const params = new URLSearchParams(queryString);

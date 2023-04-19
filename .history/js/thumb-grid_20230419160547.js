@@ -11,7 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
       game.isWishlisted = 1;
     }
   });
-  
+  if (games.length === 0) { // As per Abi's advice in last class session to get functional code first, not optimized.
+    location.reload();
+    console.log(games.length);
+  }
   setTimeout(() => {
     // Generate the HTML for the game
     const html = games

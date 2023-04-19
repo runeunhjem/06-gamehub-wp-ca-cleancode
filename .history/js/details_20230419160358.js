@@ -66,11 +66,7 @@ fetch(apiUrl)
 
     // CREATE HTML WITH DEATILS FROM API
     function createDetails() {
-      if (games.length === 0) {
-        // As per Abi's advice in last class session to get functional code first, not optimized.
-        location.reload();
-        console.log(games.length);
-      }
+      
       const queryString = window.location.search;
       const params = new URLSearchParams(queryString);
       const gameID = parseInt(params.get("id"));
@@ -96,6 +92,7 @@ fetch(apiUrl)
       document.title = game.itemName;
 
       toggleWishlistedHeart(1000);
+
 
       gamesContainer.innerHTML = `
         <div class="main__wrapper">
