@@ -9,27 +9,25 @@ document.addEventListener("DOMContentLoaded", () => {
     if (wishlistedGames.includes(parseInt(game.id))) {
       // If the game is wishlisted, set its isWishlisted value to 1
       game.isWishlisted = 1;
-    }
+    };
   });
-  if (featured.length === 0) { // As per Abi's advice in last class session to get functional code first, not optimized.
-    location.reload();
-    console.log(featured.length);
-  }
+  
   setTimeout(() => {
     // Generate the HTML for the game
     const html = games
-      .map((game) => {
-        return `
+    .map((game) => {
+
+      return `
       <div class="thumb-box">
         <div class="thumbTitle">${game.itemName}</div>
-        <span class="thumbInfo">${game.platformShort} | ${game.type} Version</span>
+        <span class="thumbInfo">${game.platformShort} | ${ game.type } Version</span>
         <div class="thumb-cover">
           <a href="details.html?id=${parseInt(game.id)}" class="thumbs-list">
             <img class="thumb-image" src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
           </a>
         </div>
       </div>`;
-      })
+    })
       .join("");
 
     thumbsContainer.innerHTML = html;
