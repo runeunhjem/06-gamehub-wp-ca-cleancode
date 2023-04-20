@@ -1591,6 +1591,13 @@ legend {
   z-index: 1000;
 }
 
+.thumb-box:hover {
+  background-color: var(--color-validate-featuregreen);
+  transition: all 0.1s;
+  transform: scale(1.1);
+  z-index: 1000;
+}
+
 .details-section {
   display: flex;
   justify-content: center;

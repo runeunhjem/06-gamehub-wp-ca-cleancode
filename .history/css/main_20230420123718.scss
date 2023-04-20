@@ -1603,10 +1603,10 @@ legend {
   z-index: 1000;
 }
 .thumb-box:hover {
-  background-color: var(--color-validate-featuregreen);
-  // border: var(--border-1px-black);
-  transition: all 0.1s;
-  transform: scale(1.1);
+  background-color: var(--color-gr);
+  border: var(--border-1px-black);
+  transition: all 0.3s;
+  transform: scale(1.05);
   z-index: 1000;
 }
 .details-section {

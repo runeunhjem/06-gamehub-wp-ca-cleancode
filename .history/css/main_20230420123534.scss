@@ -1595,18 +1595,11 @@ legend {
   padding: 0.5em 0.5em 1.5em 0.5em;
   transition: all 0.3s;
 }
-.container:hover {
+.container:hover, .container:focus {
   border-radius: var(--border-radius-boxes);
   box-shadow: 3px 3px 8px var(--color-yellow-logo);
   transition: all 0.3s;
   transform: scale(1.05);
-  z-index: 1000;
-}
-.thumb-box:hover {
-  background-color: var(--color-validate-featuregreen);
-  // border: var(--border-1px-black);
-  transition: all 0.1s;
-  transform: scale(1.1);
   z-index: 1000;
 }
 .details-section {

@@ -1553,7 +1553,7 @@ legend {
   max-width: 95vw;
   gap: 1em;
 }
-
+ {
 .thumb-grid {
   justify-content: center;
   display: flex;
@@ -1600,13 +1600,6 @@ legend {
   box-shadow: 3px 3px 8px var(--color-yellow-logo);
   transition: all 0.3s;
   transform: scale(1.05);
-  z-index: 1000;
-}
-.thumb-box:hover {
-  background-color: var(--color-validate-featuregreen);
-  // border: var(--border-1px-black);
-  transition: all 0.1s;
-  transform: scale(1.1);
   z-index: 1000;
 }
 .details-section {
