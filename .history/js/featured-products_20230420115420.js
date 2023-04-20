@@ -111,4 +111,4 @@ import { featured } from "./featured.js";
           featuredContainer.classList.remove("hide");
         }
       });
-    // });
+    });

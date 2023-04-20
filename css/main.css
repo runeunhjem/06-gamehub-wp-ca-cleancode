@@ -5,6 +5,7 @@
   --border-radius-boxes: 0.4em;
   /* Color styles */
   --color-validate-lightgreen: #8fff98;
+  --color-validate-featuregreen: #1f6026;
   --color-validate-error: #d9d9d9;
   --color-yellow-logo: #f5c518;
   --color-yellow-80: #f5c51880;
@@ -1487,6 +1488,10 @@ legend {
   margin: 1em auto;
   gap: 0.6em;
 }
+#featured-container .container:hover {
+  background-color: var(--color-validate-featuregreen);
+  transform: scale(0.95);
+}
 
 #specials {
   display: flex;
@@ -1608,13 +1613,6 @@ legend {
   grid-template-columns: 132px 60px 35px 75px;
   grid-template-rows: 76px 38px 24px 26px 38px 28px 33px 38px 15px;
   grid-template-areas: "gametitle gametitle gametitle gametitle" "gamecover releasedate releasedate reldate" "gamecover type typeico typetext" "gamecover region regionico regiontext" "gamecover platform platformico platformtext" "gamecover gsrating gsrating rating" "gamecover readreview readreview togglewishlist" "gamecover . . price" "gamecover . . pricebefore";
-}
-
-#featured-container .container {
-  min-height: 380px;
-}
-#featured-container .container:hover {
-  transform: scale(1);
 }
 
 #wishlist-icon {

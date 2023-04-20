@@ -7,7 +7,6 @@
 
   /* Color styles */
   --color-validate-lightgreen: #8fff98;
-  --color-validate-featuregreen: #1f6026;
   --color-validate-error: #d9d9d9;
   --color-yellow-logo: #f5c518;
   --color-yellow-80: #f5c51880;
@@ -1505,8 +1504,8 @@ legend {
   margin: 1em auto;
   gap: 0.6em;
   .container:hover {
-    background-color: var(--color-validate-featuregreen);
-    transform: scale(0.95);
+    transform: scale(1.1);
+    overflow: visible;
   }
 }
 #specials {
@@ -1633,6 +1632,15 @@ legend {
   'gamecover . . pricebefore';
 }
 
+#featured-container {
+  .container {
+    min-height: 380px;
+
+  }
+  .container:hover {
+    transform: scale(1.0);
+  }
+}
 #wishlist-icon {
   display: flex;
   justify-content: flex-end;
