@@ -2825,4 +2825,9 @@ a:hover {
     padding-left: 550px;
     justify-content: space-around;
   }
+}
+.add-to-cart-clicked, .add-to-cart-clicked:hover {
+  background-color: var(--color-validate-featuregreen);
+  color: var(--color-golden);
+  font-weight: 600;
 }/*# sourceMappingURL=main.css.map */

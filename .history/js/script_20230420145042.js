@@ -76,6 +76,7 @@ function addToCart(event) {
     return; // ignore clicks on non-add-to-cart elements
   }
 
+  // Add the 'add-to-cart-clicked' class to the clicked button
   target.classList.add("add-to-cart-clicked");
   setTimeout(() => {
     target.classList.remove("add-to-cart-clicked");

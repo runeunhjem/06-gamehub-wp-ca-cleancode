@@ -74,13 +74,7 @@ function addToCart(event) {
   const target = event.target;
   if (!target.classList.contains("add-to-cart")) {
     return; // ignore clicks on non-add-to-cart elements
-  }
-
-  target.classList.add("add-to-cart-clicked");
-  setTimeout(() => {
-    target.classList.remove("add-to-cart-clicked");
-  }, 1000);
-
+  };
   const gameID = target.dataset.id;
   const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
   const coverImage = game.coverImage;
@@ -114,7 +108,7 @@ function addToCart(event) {
     cart[existingProductIndex].total = (cart[existingProductIndex].quantity * cart[existingProductIndex].price).toFixed(2);
   } else {
     cart.push(product);
-  }
+  };
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
@@ -227,6 +221,15 @@ function clearWishlist() {
   location.reload();
   updatewishlistCount();
 };
+function showCheckmark() {
+  const checkmark = document.querySelector(".checkmark-container .checkmark-icon");
+  checkmark.style.display = "inline";
+  setTimeout(() => {
+    checkmark.style.display = "none";
+  }, 2000);
+};
+
+
 
 // FILTER SECTION
 const filterSelect = document.getElementById("filters");

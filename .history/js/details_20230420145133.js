@@ -226,7 +226,6 @@ fetch(apiUrl)
         setTimeout(() => {
           target.classList.remove("add-to-cart-clicked");
         }, 1000);
-        
         const quantity = parseInt(quantityInput.value);
         const coverImage = game.coverImage;
         const itemName = game.itemName;

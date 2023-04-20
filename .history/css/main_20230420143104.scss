@@ -2854,8 +2854,6 @@ a:hover {
     justify-content: space-around;
   }
 }
-.add-to-cart-clicked, .add-to-cart-clicked:hover {
-  background-color: var(--color-validate-featuregreen);
-  color: var(--color-golden);
-  font-weight: 600;
+.add-to-cart-clicked, .add-to-cart-clicked {
+  background-color: var(--color-validate-lightgreen);
 }

@@ -76,11 +76,21 @@ function addToCart(event) {
     return; // ignore clicks on non-add-to-cart elements
   }
 
+  // Add the 'add-to-cart-clicked' class to the clicked button
   target.classList.add("add-to-cart-clicked");
   setTimeout(() => {
     target.classList.remove("add-to-cart-clicked");
   }, 1000);
-
+  // function addToCart(event) {
+  //   const target = event.target;
+  //   target.classList.add("add-to-cart-clicked");
+  //   // target.innerText="Added to cart";
+  //   setTimeout(() => {
+  //     target.classList.remove("add-to-cart-clicked");
+  //   }, 1000);
+  //   if (!target.classList.contains("add-to-cart")) {
+  //     return; // ignore clicks on non-add-to-cart elements
+  //   };
   const gameID = target.dataset.id;
   const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
   const coverImage = game.coverImage;
