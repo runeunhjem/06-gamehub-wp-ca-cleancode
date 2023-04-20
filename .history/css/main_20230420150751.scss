@@ -2854,30 +2854,12 @@ a:hover {
     justify-content: space-around;
   }
 }
-// .add-to-cart-clicked, .add-to-cart-clicked:hover {
-//   background-color: var(--color-green-checked);
-//   color: var(--color-black);
-//   border: var(--border-1px-black);
-//   font-weight: 600;
-//   // :after {
-//   //   background-image:  url("../images/check.svg");}
-// }
-
 .add-to-cart-clicked, .add-to-cart-clicked:hover {
-  // background-color: var(--color-green-checked);
-  background-color: var(--color-black);
-  color: var(--color-yellow-logo);
-  border: var(--border-1px-yellow);
+  background-color: var(--color-green-checked);
+  color: var(--color-black);
+  border: var(--border-1px-black);
   font-weight: 600;
-}
-
-.add-to-cart-clicked::after {
-  content: "";
-  display: inline-block;
-  background-image: url("../images/ico_check.svg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 16px; /* Adjust the width as needed */
-  height: 15px; /* Adjust the height as needed */
-  margin-left: 2px; /* Adjust the space between text and checkmark */
+  :after {
+    
+  }
 }

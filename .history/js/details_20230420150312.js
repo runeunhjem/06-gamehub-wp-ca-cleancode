@@ -223,6 +223,7 @@ fetch(apiUrl)
         }
 
         target.classList.add("add-to-cart-clicked");
+        target.innerT = "Added to cart";
         setTimeout(() => {
           target.classList.remove("add-to-cart-clicked");
         }, 1000);

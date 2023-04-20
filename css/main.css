@@ -2827,7 +2827,19 @@ a:hover {
   }
 }
 .add-to-cart-clicked, .add-to-cart-clicked:hover {
-  background-color: var(--color-validate-featuregreen);
-  color: var(--color-golden);
+  background-color: var(--color-black);
+  color: var(--color-yellow-logo);
+  border: var(--border-1px-yellow);
   font-weight: 600;
+}
+
+.add-to-cart-clicked::after {
+  content: "";
+  display: inline-block;
+  background-image: url("../images/ico_check.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 16px; /* Adjust the width as needed */
+  height: 15px; /* Adjust the height as needed */
+  margin-left: 2px; /* Adjust the space between text and checkmark */
 }/*# sourceMappingURL=main.css.map */
