@@ -335,5 +335,7 @@ if (sortAreOnPage) {
 
       // Set the HTML of the gamesContainer element to the filtered HTML
       gamesContainer.innerHTML = sortedHtml;
+      // toggleWishlistedHeart(1000);
+
   });
 };

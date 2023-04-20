@@ -1,4 +1,5 @@
 // Toggle between heart and heart+ icons when clicking on the wishlist icon
+
 function toggleWishlistedHeart(delay) {
   setTimeout(() => {
     let heartIcon;
@@ -21,3 +22,4 @@ function toggleWishlistedHeart(delay) {
 };
 
 export { toggleWishlistedHeart };
+

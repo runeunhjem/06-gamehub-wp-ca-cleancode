@@ -253,7 +253,7 @@ if (sortAreOnPage) {
       sortedGames = sortedGames.sort((a, b) => a.itemName.localeCompare(b.itemName));
     } else if (selectedSort === "Name (Z to A)") {
       sortedGames = sortedGames.sort((a, b) => b.itemName.localeCompare(a.itemName));
-    };
+    }
 
     // Regenerate the HTML for the sorted games
     const sortedHtml = sortedGames
@@ -335,5 +335,7 @@ if (sortAreOnPage) {
 
       // Set the HTML of the gamesContainer element to the filtered HTML
       gamesContainer.innerHTML = sortedHtml;
+      // toggleWishlistedHeart(1000);
+
   });
 };

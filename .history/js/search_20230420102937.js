@@ -21,17 +21,19 @@ function renderGameCards(filteredGames) {
     const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
     // ... (rest of the code for rendering the game cards)
     const platformIcon =
-      game.platform === "XBOX"
-        ? "images/ico_xbox_yellow.svg"
-        : game.platform === "Playstation 4"
-        ? "images/ico_psn.svg"
-        : game.platform === "Playstation 5"
-        ? "images/ico_psn.svg"
-        : game.platform === "Nintendo"
-        ? "images/ico_nintendo_yellow.svg"
-        : "";
+        game.platform === "XBOX"
+          ? "images/ico_xbox_yellow.svg"
+          : game.platform === "Playstation 4"
+          ? "images/ico_psn.svg"
+          : game.platform === "Playstation 5"
+          ? "images/ico_psn.svg"
+          : game.platform === "Nintendo"
+          ? "images/ico_nintendo_yellow.svg"
+          : "";
 
-    gamesContainer.innerHTML += `
+      toggleWishlistedHeart(1000);
+
+      gamesContainer.innerHTML += `
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
           <div class="items ${game.itemName}">
             <div class="psnleft game-title">
@@ -86,8 +88,7 @@ function renderGameCards(filteredGames) {
           </div>
         </div>`;
   });
-  toggleWishlistedHeart(1000);
-};
+}
 
 function updateNumberOfProducts(searchTerm, filteredGames) {
   const productsElement = document.querySelector(".number-of-products");
@@ -95,13 +96,12 @@ function updateNumberOfProducts(searchTerm, filteredGames) {
     productsElement.textContent = `Games with ${searchTerm} in the title: ${filteredGames.length}`;
   } else {
     productsElement.textContent = `Total number of games: ${filteredGames.length}`;
-  };
-};
+  }
+}
 
 setTimeout(() => {
-
-  function handleSearch(useInputField = false) {
-    searchTerm = useInputField ? document.querySelector("#search").value : searchQuery;
+  function handleSearch() {
+    searchTerm = searchQuery ? searchQuery : document.querySelector("#search").value;
     filteredGames =
       searchTerm.length === 0
         ? games
@@ -109,14 +109,16 @@ setTimeout(() => {
 
     renderGameCards(filteredGames);
     updateNumberOfProducts(searchTerm, filteredGames);
-  };
+  }
 
   handleSearch();
+
 
   const searchForm = document.querySelector("#search-form");
   searchForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    handleSearch(true);
+    searchQuery = null;
+    handleSearch();
   });
 
 }, 1000);
@@ -125,6 +127,7 @@ setTimeout(() => {
 const filterSelect = document.getElementById("filters");
 filterSelect.addEventListener("change", (event) => {
   const selectedFilter = event.target.value;
+  // let filteredGames = games;
   let filteredGames =
     searchQuery.length === 0
       ? games
@@ -147,7 +150,7 @@ filterSelect.addEventListener("change", (event) => {
         return false;
       }
     });
-  };
+  }
 
   // Regenerate the HTML for the filtered games
   const filteredHtml = filteredGames
@@ -166,6 +169,8 @@ filterSelect.addEventListener("change", (event) => {
           : game.platform === "Nintendo"
           ? "images/ico_nintendo_yellow.svg"
           : "";
+
+      toggleWishlistedHeart(1000);
 
       return `
       <div class="container game-cards" data-filter="${game.platform}-${game.type}">
@@ -227,9 +232,9 @@ filterSelect.addEventListener("change", (event) => {
     })
     .join("");
 
-    // Set the HTML of the gamesContainer element to the filtered HTML
-    gamesContainer.innerHTML = filteredHtml;
-  });
+  // Set the HTML of the gamesContainer element to the filtered HTML
+  gamesContainer.innerHTML = filteredHtml;
+});
 
 // SORT SECTION
 const sortSelect = document.getElementById("sort");
@@ -253,7 +258,7 @@ if (sortAreOnPage) {
       sortedGames = sortedGames.sort((a, b) => a.itemName.localeCompare(b.itemName));
     } else if (selectedSort === "Name (Z to A)") {
       sortedGames = sortedGames.sort((a, b) => b.itemName.localeCompare(a.itemName));
-    };
+    }
 
     // Regenerate the HTML for the sorted games
     const sortedHtml = sortedGames
@@ -272,6 +277,8 @@ if (sortAreOnPage) {
             : game.platform === "Nintendo"
             ? "images/ico_nintendo_yellow.svg"
             : "";
+
+        toggleWishlistedHeart(1000);
 
         return `
           <div class="container game-cards" data-filter="${game.platform}-${game.type}">
@@ -333,7 +340,7 @@ if (sortAreOnPage) {
       })
       .join("");
 
-      // Set the HTML of the gamesContainer element to the filtered HTML
-      gamesContainer.innerHTML = sortedHtml;
+    // Set the HTML of the gamesContainer element to the filtered HTML
+    gamesContainer.innerHTML = sortedHtml;
   });
-};
+}

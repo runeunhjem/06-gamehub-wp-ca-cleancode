@@ -1,4 +1,5 @@
 import { featured } from "./featured.js";
+// import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const featuredContainer = document.querySelector(".featured-container");
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generate the HTML for all the games
     if (featured.length === 0) { // As per Abi's advice in last class session to get functional code first, not optimized.
       location.reload();
+      console.log(featured.length);
     };
 
     const html = featured

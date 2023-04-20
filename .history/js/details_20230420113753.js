@@ -69,6 +69,7 @@ fetch(apiUrl)
       if (games.length === 0) {
         // As per Abi's advice in last class session to get functional code first, not optimized.
         location.reload();
+
       }
       const queryString = window.location.search;
       const params = new URLSearchParams(queryString);

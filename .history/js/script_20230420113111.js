@@ -4,6 +4,7 @@ let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const gamesContainer = document.getElementById("games-container");
+
 const featuredContainer = document.getElementById("featured-container");
 
 // DROPDOWN MENU
@@ -79,6 +80,7 @@ function addToCart(event) {
   const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
   const coverImage = game.coverImage;
   let quantity = 1;
+  // const isWishlisted = game.isWishlisted;
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const isWishlisted = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID, 10)) >= 0 ? 1 : 0;
   const container = target.closest(".container");

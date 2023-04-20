@@ -1,10 +1,12 @@
 // Toggle between heart and heart+ icons when clicking on the wishlist icon
+
 function toggleWishlistedHeart(delay) {
   setTimeout(() => {
     let heartIcon;
     const wishlistIcons = document.querySelectorAll(".wishlist-icon");
     wishlistIcons.forEach(function (wishlistIcon) {
       wishlistIcon.addEventListener("click", function () {
+
         heartIcon = this.classList.contains("far") ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
         this.src = heartIcon;
         this.classList.toggle("far");
@@ -21,3 +23,5 @@ function toggleWishlistedHeart(delay) {
 };
 
 export { toggleWishlistedHeart };
+// Call the function with a delay of 1000 milliseconds (1 second)
+// toggleWishlistedHeart(1000);

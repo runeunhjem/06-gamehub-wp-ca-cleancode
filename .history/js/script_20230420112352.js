@@ -4,6 +4,7 @@ let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const gamesContainer = document.getElementById("games-container");
+
 const featuredContainer = document.getElementById("featured-container");
 
 // DROPDOWN MENU
@@ -59,14 +60,14 @@ form.addEventListener("submit", function (event) {
 function resetBackgroundColor() {
   var searchInput = document.querySelector('input[type="text"]');
   searchInput.style.backgroundColor = "#00000099";
-};
+}
 
 document.addEventListener("click", function (event) {
   var searchForm = document.querySelector("form");
   var isClickInside = searchForm.contains(event.target);
   if (!isClickInside) {
     resetBackgroundColor();
-  };
+  }
 });
 
 // ADD TO CART FUNCTION
@@ -74,11 +75,12 @@ function addToCart(event) {
   const target = event.target;
   if (!target.classList.contains("add-to-cart")) {
     return; // ignore clicks on non-add-to-cart elements
-  };
+  }
   const gameID = target.dataset.id;
   const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
   const coverImage = game.coverImage;
   let quantity = 1;
+  // const isWishlisted = game.isWishlisted;
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const isWishlisted = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID, 10)) >= 0 ? 1 : 0;
   const container = target.closest(".container");
@@ -108,16 +110,16 @@ function addToCart(event) {
     cart[existingProductIndex].total = (cart[existingProductIndex].quantity * cart[existingProductIndex].price).toFixed(2);
   } else {
     cart.push(product);
-  };
+  }
   localStorage.setItem("cart", JSON.stringify(cart));
-};
+}
 
 // ADD TO WISHLIST FUNCTION
 function addToWishlist(event) {
   const target = event.target;
   if (!target.classList.contains("add-to-wishlist")) {
     return; // ignore clicks on non-add-to-wishlist elements
-  };
+  }
   const gameID = target.dataset.id;
   let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
   const existingIndex = wishlist.findIndex((game) => parseInt(game.id) === parseInt(gameID));
@@ -128,7 +130,7 @@ function addToWishlist(event) {
     if (window.location.pathname === "/wishlist.html") {
       const icon = document.querySelector(`.wishlist-icon[data-id="${gameID}"]`);
       icon.closest(".container").remove();
-    };
+    }
   } else {
     const game = games.find((g) => parseInt(g.id, 10) === parseInt(gameID, 10));
     const coverImage = game.coverImage;
@@ -182,27 +184,27 @@ function addToWishlist(event) {
     if (cartGame) {
       cartGame.isWishlisted = 1;
       localStorage.setItem("cart", JSON.stringify(cart));
-    };
-  };
-};
+    }
+  }
+}
 
 if (gamesContainer) {
   gamesContainer.addEventListener("click", addToWishlist);
   gamesContainer.addEventListener("click", addToCart);
-};
+}
 
 if (featuredContainer) {
   featuredContainer.addEventListener("click", addToCart);
   featuredContainer.addEventListener("click", addToWishlist);
-};
+}
 
 if (document.querySelector(".clear-cart")) {
   document.querySelector(".clear-cart").addEventListener("click", clearCart);
-};
+}
 
 if (document.querySelector(".clear-wishlist")) {
   document.querySelector(".clear-wishlist").addEventListener("click", clearWishlist);
-};
+}
 
 // clear cart function
 function clearCart() {
@@ -211,7 +213,7 @@ function clearCart() {
   localStorage.setItem("cart", JSON.stringify(cart));
   location.reload();
   updateCartCount();
-};
+}
 
 // clear wishlist function
 function clearWishlist() {
@@ -220,7 +222,7 @@ function clearWishlist() {
   localStorage.setItem("wishlist", JSON.stringify(wishlist));
   location.reload();
   updatewishlistCount();
-};
+}
 
 // FILTER SECTION
 const filterSelect = document.getElementById("filters");
@@ -246,7 +248,7 @@ if (filtersAreOnPage) {
           return false;
         }
       });
-    };
+    }
 
     // Regenerate the HTML for the filtered games
     const filteredHtml = filteredGames
@@ -265,6 +267,8 @@ if (filtersAreOnPage) {
             : game.platform === "Nintendo"
             ? "images/ico_nintendo_yellow.svg"
             : "";
+
+
 
         return `
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
@@ -330,7 +334,7 @@ if (filtersAreOnPage) {
     gamesContainer.innerHTML = filteredHtml;
     toggleWishlistedHeart(1000);
   });
-};
+}
 
 // SORT SECTION
 const sortSelect = document.getElementById("sort");
@@ -351,7 +355,7 @@ if (sortAreOnPage) {
       sortedGames = sortedGames.sort((a, b) => a.itemName.localeCompare(b.itemName));
     } else if (selectedSort === "Name (Z to A)") {
       sortedGames = sortedGames.sort((a, b) => b.itemName.localeCompare(a.itemName));
-    };
+    }
 
     // Regenerate the HTML for the sorted games
     const sortedHtml = sortedGames
@@ -433,6 +437,6 @@ if (sortAreOnPage) {
 
     // Set the HTML of the gamesContainer element to the filtered HTML
     gamesContainer.innerHTML = sortedHtml;
-    toggleWishlistedHeart(1000);
+    // toggleWishlistedHeart(1000);
   });
-};
+}

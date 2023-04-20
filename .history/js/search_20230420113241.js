@@ -21,17 +21,18 @@ function renderGameCards(filteredGames) {
     const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
     // ... (rest of the code for rendering the game cards)
     const platformIcon =
-      game.platform === "XBOX"
-        ? "images/ico_xbox_yellow.svg"
-        : game.platform === "Playstation 4"
-        ? "images/ico_psn.svg"
-        : game.platform === "Playstation 5"
-        ? "images/ico_psn.svg"
-        : game.platform === "Nintendo"
-        ? "images/ico_nintendo_yellow.svg"
-        : "";
+        game.platform === "XBOX"
+          ? "images/ico_xbox_yellow.svg"
+          : game.platform === "Playstation 4"
+          ? "images/ico_psn.svg"
+          : game.platform === "Playstation 5"
+          ? "images/ico_psn.svg"
+          : game.platform === "Nintendo"
+          ? "images/ico_nintendo_yellow.svg"
+          : "";
 
-    gamesContainer.innerHTML += `
+      
+      gamesContainer.innerHTML += `
         <div class="container game-cards" data-filter="${game.platform}-${game.type}">
           <div class="items ${game.itemName}">
             <div class="psnleft game-title">
@@ -86,8 +87,7 @@ function renderGameCards(filteredGames) {
           </div>
         </div>`;
   });
-  toggleWishlistedHeart(1000);
-};
+}
 
 function updateNumberOfProducts(searchTerm, filteredGames) {
   const productsElement = document.querySelector(".number-of-products");
@@ -229,6 +229,8 @@ filterSelect.addEventListener("change", (event) => {
 
     // Set the HTML of the gamesContainer element to the filtered HTML
     gamesContainer.innerHTML = filteredHtml;
+
+    // toggleWishlistedHeart(1000);
   });
 
 // SORT SECTION
@@ -253,7 +255,7 @@ if (sortAreOnPage) {
       sortedGames = sortedGames.sort((a, b) => a.itemName.localeCompare(b.itemName));
     } else if (selectedSort === "Name (Z to A)") {
       sortedGames = sortedGames.sort((a, b) => b.itemName.localeCompare(a.itemName));
-    };
+    }
 
     // Regenerate the HTML for the sorted games
     const sortedHtml = sortedGames
@@ -335,5 +337,7 @@ if (sortAreOnPage) {
 
       // Set the HTML of the gamesContainer element to the filtered HTML
       gamesContainer.innerHTML = sortedHtml;
+      // toggleWishlistedHeart(1000);
+
   });
 };
