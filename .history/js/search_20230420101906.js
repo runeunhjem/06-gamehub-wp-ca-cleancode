@@ -20,73 +20,7 @@ function renderGameCards(filteredGames) {
     let heartIcon = game.isWishlisted === 1 ? "images/ico_heart.svg" : "images/ico_heart_+.svg";
     const typeIcon = game.type === "Key" ? "images/ico_key.svg" : "images/ico_disc.svg";
     // ... (rest of the code for rendering the game cards)
-    const platformIcon =
-        game.platform === "XBOX"
-          ? "images/ico_xbox_yellow.svg"
-          : game.platform === "Playstation 4"
-          ? "images/ico_psn.svg"
-          : game.platform === "Playstation 5"
-          ? "images/ico_psn.svg"
-          : game.platform === "Nintendo"
-          ? "images/ico_nintendo_yellow.svg"
-          : "";
-
-      toggleWishlistedHeart(1000);
-
-      gamesContainer.innerHTML += `
-        <div class="container game-cards" data-filter="${game.platform}-${game.type}">
-          <div class="items ${game.itemName}">
-            <div class="psnleft game-title">
-              <h2 class="h4 type">${game.itemName}</h2>
-              <span class="gametitle-info">${game.platformShort} | ${game.type} Version</span>
-            </div>
-            <div class="game-cover">
-            <a href="details.html?id=${game.id}" class="results-list">
-              <img src=${game.coverImage} alt="${game.itemName} ${game.platform} | ${game.type} Version">
-            </a>
-            </div>
-            <div class="small psnleft release-date">Release Date:</div>
-            <div class="small psnright reldate">${game.releaseDate}</div>
-            <div class="small psnleft">Type:</div>
-            <div class="small psncenter type-ico">
-              <img src="${typeIcon}" alt="${game.type}">
-            </div>
-            <div class="small psnright type-text">${game.type}</div>
-            <div class="small psnleft region">Region:</div>
-            <div class="small psncenter region-ico">
-              <img src="images/ico_europe.svg" alt="Region | Europe">
-            </div>
-            <div class="small psnright region-text">${game.region}</div>
-            <div class="small psnleft platform">Platform:</div>
-            <div class="small psncenter platform-ico">
-              <img src="${platformIcon}" alt="${game.platform}">
-            </div>
-            <div class="small psnright platform-text">${game.platform}</div>
-            <div class="psnleft gsrating">Gamespot Rating:</div>
-            <div class="psnright rating">${game.gamespotRating}</div>
-            <div class="small psnleft readreview">
-              <a href="https://www.gamespot.com/games/reviews/">Read review</a>
-            </div>
-            <div class="togglewishlist add-to-wishlist">
-              <span class="small psnright" href="wishlist.html">
-                <img class="remove small psnright add-to-wishlist wishlist-icon ${
-                  game.isWishlisted === 1 ? "fas" : "far"
-                }" src="${heartIcon}" alt="Add to wishlist" data-id="${parseInt(game.id)}">
-              </span>
-            </div>
-            <div class="price psnright">
-              <span class="dollar yellow">.</span><span class="currentPrice price">${game.currentPrice}</span>
-            </div>
-            <div class="price__before psnright">
-              <span class="dollar yellow">.</span>${game.beforePrice}
-            </div>
-          </div>
-          <div class="psn__buttons">
-            <div class="cta add-to-cart" data-id="${game.id}">Add to cart</div>
-            <a href="details.html?id=${game.id}" class="results-list" role="button">
-            <div class="cta">View Details</div></a>
-          </div>
-        </div>`;
+    
   });
 }
 
@@ -100,8 +34,20 @@ function updateNumberOfProducts(searchTerm, filteredGames) {
 }
 
 setTimeout(() => {
-  function handleSearch() {
-    searchTerm = searchQuery ? searchQuery : document.querySelector("#search").value;
+  if (searchQuery.length > 0) {
+    searchTerm = searchQuery;
+  } else {
+    searchTerm = document.querySelector("#search").value;
+  }
+  renderGameCards(filteredGames);
+  updateNumberOfProducts(searchTerm, filteredGames);
+
+  const searchForm = document.querySelector("#search-form");
+  searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    searchTerm = document.querySelector("#search").value;
+    input.value = "";
+
     filteredGames =
       searchTerm.length === 0
         ? games
@@ -109,18 +55,7 @@ setTimeout(() => {
 
     renderGameCards(filteredGames);
     updateNumberOfProducts(searchTerm, filteredGames);
-  }
-
-  handleSearch();
-
-
-  const searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    searchQuery = null;
-    handleSearch();
   });
-
 }, 1000);
 
 // import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";

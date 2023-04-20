@@ -115,11 +115,19 @@ setTimeout(() => {
 
 
   const searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    searchQuery = null;
-    handleSearch();
-  });
+searchForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  searchTerm = document.querySelector("#search").value;
+  input.value = "";
+
+  filteredGames =
+    searchTerm.length === 0
+      ? games
+      : games.filter((game) => game.itemName.toLowerCase().includes(searchTerm.toLowerCase()));
+
+  renderGameCards(filteredGames);
+  updateNumberOfProducts(searchTerm, filteredGames);
+});
 
 }, 1000);
 

@@ -100,8 +100,20 @@ function updateNumberOfProducts(searchTerm, filteredGames) {
 }
 
 setTimeout(() => {
-  function handleSearch() {
-    searchTerm = searchQuery ? searchQuery : document.querySelector("#search").value;
+  if (searchQuery.length > 0) {
+    searchTerm = searchQuery;
+  } else {
+    searchTerm = document.querySelector("#search").value;
+  }
+  renderGameCards(filteredGames);
+  updateNumberOfProducts(searchTerm, filteredGames);
+
+  const searchForm = document.querySelector("#search-form");
+  searchForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    searchTerm = document.querySelector("#search").value;
+    input.value = "";
+
     filteredGames =
       searchTerm.length === 0
         ? games
@@ -109,18 +121,7 @@ setTimeout(() => {
 
     renderGameCards(filteredGames);
     updateNumberOfProducts(searchTerm, filteredGames);
-  }
-
-  handleSearch();
-
-
-  const searchForm = document.querySelector("#search-form");
-  searchForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    searchQuery = null;
-    handleSearch();
   });
-
 }, 1000);
 
 // import { toggleWishlistedHeart } from "./functions/toggleWishlistedHeart.js";
