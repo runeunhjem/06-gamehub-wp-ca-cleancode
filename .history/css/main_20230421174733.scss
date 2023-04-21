@@ -1996,7 +1996,7 @@ legend {
   border-radius: var(--border-radius-boxes);
   cursor: pointer;
 }
-.cancel-order {
+.cancel-order, .cancel-order:hover {
   color: var(--color-red);
 }
 

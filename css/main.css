@@ -1275,10 +1275,9 @@ legend {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1em;
 }
 .checkout__bottom .terms {
-  padding: 0.5em;
+  margin-bottom: 1em;
   width: 200px;
   font-size: 0.8rem;
   text-align: center;
@@ -1994,6 +1993,10 @@ legend {
   border: var(--border-1px-yellow);
   border-radius: var(--border-radius-boxes);
   cursor: pointer;
+}
+
+.cancel-order {
+  color: var(--color-red);
 }
 
 .clear-wishlist {
